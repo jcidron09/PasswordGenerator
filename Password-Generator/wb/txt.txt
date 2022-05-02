@@ -1,0 +1,15 @@
+if 'passwords' not in session:
+        print(session.items())
+        return render_template("generator.html", content="Error! No saved passwords")
+    formatted_passwords = ""
+    if request.method == 'POST':
+        for password in (session["passwords"]):
+            print(password)
+            print(len(session["passwords"]))
+            session["passwords"].pop(password)
+        return render_template("generator.html", content=formatted_passwords)
+    for password in session["passwords"]:
+        formatted_passwords += str(password)
+        formatted_passwords += "<br>"
+    print(formatted_passwords)
+    return render_template("generator.html", content=formatted_passwords)

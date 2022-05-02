@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+    <body>
+        {% extends "base.html" %}
+        {% block title %}Password Generator{% endblock %}
+        {% block content %}
+            <h1>Passwords:</h1>
+            <h2>
+            {% autoescape false %}
+                {{content}}
+            {% endautoescape %}
+            </h2>
+        <form method="POST" action="/generator">
+            <input type="submit" value="Clear">
+        </form>
+        {% endblock %}
+
+    </body>
+</html>
