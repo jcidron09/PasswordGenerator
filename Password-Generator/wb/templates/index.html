@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script type="text/javascript">
-      window.onload = setupRefresh;
-
-      function setupRefresh() {
-          setInterval("refreshFrame();", 1000);
-      }
-      function refreshFrame() {
-         parent.right_frame.location.reload();
-      }
-  </script>
-  </head>
+   </head>
   
 
     <body>
         {% extends "base.html" %}
         {% block title %}Home Page{% endblock %}
         {% block content %}
-            <h1>Password Generator</h1>
-            {{content}}
+            <h1> Password Generator</h1>
+        <div class="container home-box d-flex justify-content-center align-items-center ">
+            <h2 class="display-1">{{num_passwords}} Generated</h2>
+        </div>
+
         {% endblock %}
     </body>
 
