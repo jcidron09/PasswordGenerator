@@ -55,12 +55,13 @@ def create_special_characters(character_limit):
 
 
 def create_word_password(word_amount):
-    word = ""
-    if word_amount == 0:
-        return ""
+    words = []
+    cancat_word = Word_Reader.get_word_by_index(random.randint(0, len(Word_Reader.read_words())))
     for i in range (0, word_amount):
-        word += Word_Reader.get_word_by_index(random.randint(0, len(Word_Reader.read_words())))
-        word += "-"
+        word = Word_Reader.get_word_by_index(random.randint(0, len(Word_Reader.read_words())))
+        words.append(word)
+        cancat_word += "-" + word
+    return cancat_word
 
 
 def create_password(character_limit, all_allowed, lowercase_letters_allowed, uppercase_letters_allowed, alpha_allowed,
@@ -70,7 +71,8 @@ def create_password(character_limit, all_allowed, lowercase_letters_allowed, upp
     # 2 digits
     # 3 punctuation
     # 4 special characters
-    # 5 words
+    if character_limit < 1:
+        return None
     if all_allowed:
         pass
     elif lowercase_letters_allowed:
@@ -149,3 +151,7 @@ def create_password(character_limit, all_allowed, lowercase_letters_allowed, upp
             elif character == 4:
                 password += create_special_characters(1)
     return password
+
+
+if __name__ == "__main__":
+    print(create_word_password(10))
